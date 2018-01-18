@@ -1,0 +1,73 @@
+.gutter {
+  width: 30%;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.options {
+  text-align: right;
+  display: inline-block;
+}
+
+.options input,
+.options label,
+.options select,
+.options button {
+  margin-top: 5%;
+  font-size: 1.1em;
+}
+
+#boardContainer {
+  background-color: #6d6d6d;
+  padding-left: 1%;
+}
+
+.pegSlots,
+.peg,
+.scoreSlots,
+.score,
+.scoreRow {
+  display: inline-block;
+}
+
+.scoreRow {
+  width: 4%;
+}
+
+.pegSlots,
+.scoreSlots {
+  display: inline;
+}
+
+.colorPegs img:hover {
+  cursor: pointer;
+}
+
+.peg {
+  width: 10%;
+  margin-left: -1%;
+}
+
+.peg img,
+.score img {
+  width: 100%;
+}
+
+.score {
+  /*width: 5%;*/
+  margin-left: -1%;
+}
+
+.fancyButton {
+  border: none;
+  border-radius: 6px;
+  margin-left: 33%;
+  margin-bottom: 3%;
+  padding: 2%;
+}
+
+.submit {
+  width: 33%;
+}
