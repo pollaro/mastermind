@@ -9,8 +9,8 @@ export class BoardComponent implements OnInit {
   colors = ['blue', 'red', 'yellow', 'black', 'green', 'white']
   scores = ['white', 'black']
   round = 12
-  duplicates = false
-  blanks = false
+  duplicates
+  blanks
   score = { pos1: 'none', pos2: 'none', pos3: 'none', pos4: 'none' }
   scoreArr = new Array(this.round).fill(this.score)
   guess = { pos1: 'none', pos2: 'none', pos3: 'none', pos4: 'none' }
@@ -23,7 +23,6 @@ export class BoardComponent implements OnInit {
 
   ngOnInit() {
     this.resetGame()
-    this.generateKey()
   }
 
   resetGame() {
@@ -33,6 +32,7 @@ export class BoardComponent implements OnInit {
       this.colors = ['blue', 'red', 'yellow', 'black', 'green', 'white']
     }
 
+    console.log(this.duplicates)
     if (this.duplicates) {
       this.duplicates = true
     } else {
@@ -44,6 +44,7 @@ export class BoardComponent implements OnInit {
     this.guess = { pos1: 'none', pos2: 'none', pos3: 'none', pos4: 'none' }
     this.guessArr = Array(this.round).fill(this.guess)
     this.currentRound = 0
+    this.generateKey()
   }
 
   generateKey() {
@@ -76,7 +77,135 @@ export class BoardComponent implements OnInit {
     this.mouseVal = color
   }
 
-  submitGuess() {}
+  submitGuess() {
+    var currGuess = this.guessArr[this.currentRound]
+    var white = 0
+    var black = 0
+    var keyW = 0,
+      keyG = 0,
+      keyB = 0,
+      keyY = 0,
+      keyR = 0,
+      keyBlck = 0
+    var guessW = 0,
+      guessG = 0,
+      guessB = 0,
+      guessY = 0,
+      guessR = 0,
+      guessBlck = 0
+    if (this.blanks) {
+      var keyBlnk = 0,
+        guessBlnk = 0
+    }
+
+    for (var k in this.key) {
+      if (this.key[k] == currGuess[k]) {
+        black++
+      } else {
+        switch (this.key[k]) {
+          case 'white':
+            keyW++
+            break
+          case 'black':
+            keyBlck++
+            break
+          case 'blue':
+            keyB++
+            break
+          case 'red':
+            keyR++
+            break
+          case 'yellow':
+            keyY++
+            break
+          case 'green':
+            keyG++
+            break
+          case 'none':
+            keyBlnk++
+            break
+        }
+        switch (currGuess[k]) {
+          case 'white':
+            guessW++
+            break
+          case 'black':
+            guessBlck++
+            break
+          case 'blue':
+            guessB++
+            break
+          case 'red':
+            guessR++
+            break
+          case 'yellow':
+            guessY++
+            break
+          case 'green':
+            guessG++
+            break
+          case 'none':
+            guessBlnk++
+            break
+        }
+      }
+    }
+
+    if (black === 4) {
+      console.log('winner')
+    } else {
+      while (keyW > 0 && guessW > 0) {
+        keyW--
+        guessW--
+        white++
+      }
+      while (keyB > 0 && guessB > 0) {
+        keyB--
+        guessB--
+        white++
+      }
+      while (keyG > 0 && guessG > 0) {
+        keyG--
+        guessG--
+        white++
+      }
+      while (keyY > 0 && guessY > 0) {
+        keyY--
+        guessY--
+        white++
+      }
+      while (keyR > 0 && guessR > 0) {
+        keyR--
+        guessR--
+        white++
+      }
+      while (keyBlck > 0 && guessBlck > 0) {
+        keyBlck--
+        guessBlck--
+        white++
+      }
+      while (keyBlnk > 0 && guessBlnk > 0) {
+        keyBlnk--
+        guessBlnk--
+        white++
+      }
+    }
+
+    var x = 0
+    var pos = ['pos1', 'pos2', 'pos3', 'pos4']
+    while (black > 0 && white > 0) {
+      if (black > 0) {
+        this.score[pos[x]] = 'black'
+        black--
+        x++
+      } else if (white > 0) {
+        this.score[pos[x]] = 'white'
+        white--
+        x++
+      }
+    }
+    this.scoreArr[this.currentRound] = this.score
+  }
 
   placeColorPos1() {
     this.guessArr[this.currentRound] = {

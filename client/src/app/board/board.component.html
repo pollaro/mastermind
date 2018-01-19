@@ -40,13 +40,14 @@
     </div>
     <br>
     <button class="submit fancyButton" type="button" (click)='submitGuess()'>Submit</button>
+    {{key['pos1']}} {{key['pos2']}} {{key['pos3']}} {{key['pos4']}}
 </div>
 
 <div class="gutter right"id="options">
     <div class="options">
-        <label for="blanks">Blanks used?</label> <input type="checkbox" name="blanks"><br>
-        <label for="duplicates">Duplicates allowed?</label> <input type="checkbox" name="duplicates" checked><br>
-        <label for="round">Rounds:</label> <select name="round">
+        <label for="blanks">Blanks used?</label> <input type="checkbox" [(ngModel)]="blanks"><br>
+        <label for="duplicates">Duplicates allowed?</label> <input type="checkbox" [(ngModel)]="duplicates"><br>
+        <label for="round">Rounds:</label> <select [(ngModel)]="round">
             <option value="8">8</option>
             <option value="12" selected>12</option>
             <option value="16">16</option>
