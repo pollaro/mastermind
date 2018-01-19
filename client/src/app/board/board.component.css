@@ -13,6 +13,9 @@
 .options {
   text-align: right;
   display: inline-block;
+  border: thin solid black;
+  padding: 1%;
+  margin-left: 1%;
 }
 
 .options input,
@@ -26,6 +29,7 @@
 #rules {
   border: thin solid black;
   padding: 1%;
+  margin-right: 1%;
 }
 
 #rules p {
@@ -45,9 +49,10 @@
 }
 
 #boardContainer {
-  margin-top: 5%;
+  margin-top: 3%;
   background-color: #6d6d6d;
   padding-left: 1%;
+  max-width: 25%;
 }
 
 .pegSlots,
@@ -92,10 +97,12 @@
   margin-left: 33%;
   margin-bottom: 3%;
   padding: 2%;
+  min-width: 40%;
 }
 
 .submit {
   width: 33%;
+  font-size: 1.1em;
 }
 
 .hidden {
