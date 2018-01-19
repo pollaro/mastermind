@@ -18,6 +18,8 @@ export class BoardComponent implements OnInit {
   key = { pos1: 'none', pos2: 'none', pos3: 'none', pos4: 'none' }
   mouseVal = 'none'
   currentRound = 0
+  gameOverLay = false
+  win = false
 
   constructor() {}
 
@@ -32,7 +34,6 @@ export class BoardComponent implements OnInit {
       this.colors = ['blue', 'red', 'yellow', 'black', 'green', 'white']
     }
 
-    console.log(this.duplicates)
     if (this.duplicates) {
       this.duplicates = true
     } else {
@@ -151,8 +152,9 @@ export class BoardComponent implements OnInit {
       }
     }
 
-    if (black === 4) {
-      console.log('winner')
+    if (black == 4) {
+      this.win = true
+      this.gameOver()
     } else {
       while (keyW > 0 && guessW > 0) {
         keyW--
@@ -191,20 +193,36 @@ export class BoardComponent implements OnInit {
       }
     }
 
+    var rndScore = { pos1: 'none', pos2: 'none', pos3: 'none', pos4: 'none' }
     var x = 0
     var pos = ['pos1', 'pos2', 'pos3', 'pos4']
-    while (black > 0 && white > 0) {
+    while (black > 0 || white > 0) {
       if (black > 0) {
-        this.score[pos[x]] = 'black'
+        rndScore[pos[x]] = 'black'
         black--
         x++
       } else if (white > 0) {
-        this.score[pos[x]] = 'white'
+        rndScore[pos[x]] = 'white'
         white--
         x++
       }
     }
-    this.scoreArr[this.currentRound] = this.score
+
+    this.updateScore(rndScore)
+
+    this.currentRound++
+    if (this.currentRound + 1 >= this.round) {
+      this.gameOver()
+    }
+  }
+
+  updateScore(scoreDict) {
+    this.scoreArr[this.currentRound] = {
+      pos1: scoreDict['pos1'],
+      pos2: scoreDict['pos2'],
+      pos3: scoreDict['pos3'],
+      pos4: scoreDict['pos4']
+    }
   }
 
   placeColorPos1() {
@@ -245,5 +263,9 @@ export class BoardComponent implements OnInit {
       pos4: this.mouseVal
     }
     this.mouseVal = 'none'
+  }
+
+  gameOver() {
+    this.gameOverLay = true
   }
 }

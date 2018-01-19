@@ -6,6 +6,10 @@
   vertical-align: middle;
 }
 
+.left {
+  margin-left: 3%;
+}
+
 .options {
   text-align: right;
   display: inline-block;
@@ -19,7 +23,29 @@
   font-size: 1.1em;
 }
 
+#rules {
+  border: thin solid black;
+  padding: 1%;
+}
+
+#rules p {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+#rules ul {
+  list-style-type: circle;
+  list-style-position: inside;
+  margin-left: 3%;
+}
+
+#rules ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+}
+
 #boardContainer {
+  margin-top: 5%;
   background-color: #6d6d6d;
   padding-left: 1%;
 }
@@ -70,4 +96,14 @@
 
 .submit {
   width: 33%;
+}
+
+.hidden {
+  display: none;
+}
+
+.gameOverDiv {
+  text-align: center;
+  margin-top: 20%;
+  font-size: 1.5rem;
 }
