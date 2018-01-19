@@ -12,9 +12,10 @@ export class BoardComponent implements OnInit {
   duplicates = false
   blanks = false
   score = { pos1: 'none', pos2: 'none', pos3: 'none', pos4: 'none' }
-  scoreArr = Array(this.round).fill(this.score)
+  scoreArr = new Array(this.round).fill(this.score)
   guess = { pos1: 'none', pos2: 'none', pos3: 'none', pos4: 'none' }
-  guessArr = Array(this.round).fill(this.guess)
+  guessArr = new Array(this.round).fill(this.guess)
+  key = { pos1: 'none', pos2: 'none', pos3: 'none', pos4: 'none' }
   mouseVal = 'none'
   currentRound = 0
 
@@ -22,6 +23,7 @@ export class BoardComponent implements OnInit {
 
   ngOnInit() {
     this.resetGame()
+    this.generateKey()
   }
 
   resetGame() {
@@ -44,14 +46,75 @@ export class BoardComponent implements OnInit {
     this.currentRound = 0
   }
 
-  submitGuess() {}
+  generateKey() {
+    var numColors = this.colors.length
+    var pos1Index = Math.floor(Math.random() * (numColors - 1))
+    var pos2Index = Math.floor(Math.random() * (numColors - 1))
+    var pos3Index = Math.floor(Math.random() * (numColors - 1))
+    var pos4Index = Math.floor(Math.random() * (numColors - 1))
+    if (!this.duplicates) {
+      while (pos2Index == pos1Index) {
+        var pos2Index = Math.floor(Math.random() * (numColors - 1))
+      }
+      while (pos3Index == pos2Index || pos3Index == pos1Index) {
+        var pos3Index = Math.floor(Math.random() * (numColors - 1))
+      }
+      while (pos4Index == pos3Index || pos4Index == pos2Index || pos4Index == pos1Index) {
+        var pos4Index = Math.floor(Math.random() * (numColors - 1))
+      }
+    }
 
-  placeColor(pos) {
-    this.guessArr[this.currentRound][pos] = this.mouseVal
-    this.mouseVal = 'none'
+    this.key = {
+      pos1: this.colors[pos1Index],
+      pos2: this.colors[pos2Index],
+      pos3: this.colors[pos3Index],
+      pos4: this.colors[pos4Index]
+    }
   }
 
   getColor(color) {
     this.mouseVal = color
+  }
+
+  submitGuess() {}
+
+  placeColorPos1() {
+    this.guessArr[this.currentRound] = {
+      pos1: this.mouseVal,
+      pos2: this.guessArr[this.currentRound]['pos2'],
+      pos3: this.guessArr[this.currentRound]['pos3'],
+      pos4: this.guessArr[this.currentRound]['pos4']
+    }
+    this.mouseVal = 'none'
+  }
+
+  placeColorPos2() {
+    this.guessArr[this.currentRound] = {
+      pos1: this.guessArr[this.currentRound]['pos1'],
+      pos2: this.mouseVal,
+      pos3: this.guessArr[this.currentRound]['pos3'],
+      pos4: this.guessArr[this.currentRound]['pos4']
+    }
+    this.mouseVal = 'none'
+  }
+
+  placeColorPos3() {
+    this.guessArr[this.currentRound] = {
+      pos1: this.guessArr[this.currentRound]['pos1'],
+      pos2: this.guessArr[this.currentRound]['pos2'],
+      pos3: this.mouseVal,
+      pos4: this.guessArr[this.currentRound]['pos4']
+    }
+    this.mouseVal = 'none'
+  }
+
+  placeColorPos4() {
+    this.guessArr[this.currentRound] = {
+      pos1: this.guessArr[this.currentRound]['pos1'],
+      pos2: this.guessArr[this.currentRound]['pos2'],
+      pos3: this.guessArr[this.currentRound]['pos3'],
+      pos4: this.mouseVal
+    }
+    this.mouseVal = 'none'
   }
 }
