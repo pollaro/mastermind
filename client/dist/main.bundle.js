@@ -192,6 +192,7 @@ var BoardComponent = (function () {
         this.guessArr = Array(this.round).fill(this.guess);
         this.currentRound = 0;
         this.generateKey();
+        this.gameOverLay = false;
     };
     BoardComponent.prototype.generateKey = function () {
         var numColors = this.colors.length;
