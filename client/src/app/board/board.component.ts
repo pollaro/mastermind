@@ -46,6 +46,7 @@ export class BoardComponent implements OnInit {
     this.guessArr = Array(this.round).fill(this.guess)
     this.currentRound = 0
     this.generateKey()
+    this.gameOverLay = false
   }
 
   generateKey() {
