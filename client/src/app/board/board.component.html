@@ -1,3 +1,9 @@
+<div id="menu-left">
+    <button type="button" (click)="openRules()">Rules</button>
+</div>
+<div id="menu-right">
+    <button type="button" (click)="openOptions()">Options</button>
+</div>
 <div class="gutter left" id="rules">
     <p>The object of the game is to guess the colors and order of randomly selected pegs</p>
     <br>
@@ -44,9 +50,18 @@
                 <div class="score"><img src="../assets/images/{{scoreArr[idx]['pos1']}}.png" alt="Row {{idx}}, score 1"></div>
                 <div class="score"><img src="../assets/images/{{scoreArr[idx]['pos2']}}.png" alt="Row {{idx}}, score 2"></div>
             </div>
-        <div class="scoreRow">
+            <div class="scoreRow">
                 <div class="score"><img src="../assets/images/{{scoreArr[idx]['pos3']}}.png" alt="Row {{idx}}, score 3"></div>
                 <div class="score"><img src="../assets/images/{{scoreArr[idx]['pos4']}}.png" alt="Row {{idx}}, score 4"></div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="cursorVal">
+        <p>Current Selection:</p>
+        <div class="cursorSlot">
+            <div class="peg">
+                <img src="../assets/images/{{mouseVal}}.png" alt="Current Selection">
             </div>
         </div>
     </div>
