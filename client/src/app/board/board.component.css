@@ -123,15 +123,44 @@
 }
 
 #menu-left,
-#menu-right {
+#menu-right,
+.mobile {
   display: none;
 }
 
 @media only screen and (max-width: 480px) {
+  .left {
+    margin-left: 0%;
+  }
+
   #rules,
   #options {
     display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
     z-index: 10;
+    background-color: white;
+    padding: 1%;
+  }
+
+  #rules {
+    width: 93%;
+  }
+
+  #options {
+    width: 40%;
+  }
+
+  .mobile {
+    display: inline;
+  }
+
+  .closeButton {
+    float: right;
+    border: none;
+    background-color: transparent;
+    font-size: 1.2rem;
   }
 
   #menu-left {

@@ -268,5 +268,22 @@ export class BoardComponent implements OnInit {
 
   gameOver() {
     this.gameOverLay = true
+    this.openOptions()
+  }
+
+  openRules() {
+    document.getElementById('rules').style.display = 'block'
+  }
+
+  openOptions() {
+    document.getElementById('options').style.display = 'block'
+  }
+
+  closeRules() {
+    document.getElementById('rules').style.display = 'none'
+  }
+
+  closeOptions() {
+    document.getElementById('options').style.display = 'none'
   }
 }

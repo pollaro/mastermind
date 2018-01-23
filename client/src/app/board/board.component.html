@@ -1,10 +1,11 @@
-<div id="menu-left">
+<div class="mobile" id="menu-left">
     <button type="button" (click)="openRules()">Rules</button>
 </div>
-<div id="menu-right">
+<div class="mobile" id="menu-right">
     <button type="button" (click)="openOptions()">Options</button>
 </div>
 <div class="gutter left" id="rules">
+    <button class="mobile closeButton" type="button" (click)=closeRules()>&times;</button><br class="mobile"><br class="mobile">
     <p>The object of the game is to guess the colors and order of randomly selected pegs</p>
     <br>
     <ol>
@@ -71,6 +72,7 @@
 
 <div class="gutter right"id="options">
     <div class="options">
+        <button class="mobile closeButton" type="button" (click)=closeOptions()>&times;</button><br class="mobile"><br class="mobile">
         <label for="blanks">Blanks used?</label> <input type="checkbox" [(ngModel)]="blanks"><br>
         <label for="duplicates">Duplicates allowed?</label> <input type="checkbox" [(ngModel)]="duplicates"><br>
         <label for="round">Rounds:</label> <select [(ngModel)]="round">
