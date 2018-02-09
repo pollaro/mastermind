@@ -70,7 +70,7 @@
     <button class="submit fancyButton" type="button" (click)='submitGuess()'>Submit</button>
 </div>
 
-<div class="gutter right"id="options">
+<div class="gutter right" id="options">
     <div class="options">
         <button class="mobile closeButton" type="button" (click)=closeOptions()>&times;</button><br class="mobile"><br class="mobile">
         <label for="blanks">Blanks used?</label> <input type="checkbox" [(ngModel)]="blanks"><br>
@@ -83,8 +83,8 @@
         <button class="fancyButton" type="button" (click)='resetGame()'>Reset</button>
     </div>
     <br>
-    <div [ngClass]="{'hidden':!gameOverLay,'gameOverDiv':true}">
-        <div>
+    <div class="gameOverDiv" [ngClass]="{'hidden':!gameOverLay}">
+        <div class="stupid">
             <p *ngIf="!win">Sorry, you didn't get the answer. Press reset to play again</p>
             <p *ngIf="win">Congratulations! You got it! Press reset to play again</p>
             <br>

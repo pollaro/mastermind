@@ -26,6 +26,10 @@
   font-size: 1.1em;
 }
 
+#options {
+  display: inline-block !important;
+}
+
 #rules {
   border: thin solid black;
   padding: 1%;
@@ -112,14 +116,22 @@
   font-size: 1.1em;
 }
 
-.hidden {
-  display: none;
+.right,
+.stupid,
+.stupid p {
+  display: inline-block;
 }
 
 .gameOverDiv {
+  display: inline-block !important;
   text-align: center;
   margin-top: 20%;
   font-size: 1.5rem;
+}
+
+.hidden {
+  visibility: hidden;
+  display: inline-block;
 }
 
 #menu-left,
